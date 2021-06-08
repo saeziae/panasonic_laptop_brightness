@@ -10,9 +10,16 @@ vendor="/sys/class/backlight/panasonic"
 intel="/sys/class/backlight/intel_backlight"
 maxVendor=$(cat $vendor/max_brightness)
 maxIntel=$(cat $intel/max_brightness)
+ratio=$(maxIntel * vendorAct / maxVendor)
+
+setBrightness() {
+    vendorAct=$(cat $vendor/actual_brightness)
+    intelAct=$((ratio * vendorAct))
+    echo $intelAct | tee $intel/brightness
+}
+
+SetBrightness #deleting this will cause bug but idk why
 
 while (true); do
-    vendorAct=$(cat $vendor/actual_brightness)
-    intelAct=$(( maxIntel * vendorAct / maxVendor ))
-    echo $intelAct | tee $intel/brightness
+    SetBrightness
 done

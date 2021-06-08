@@ -1,3 +1,5 @@
-# Script to fix brightness adjustment for Panasonic laptop
+*Script to fix brightness adjustment for Panasonic laptop*
 
-`sudo ./install.sh`
+## Installing
+
+`sudo bash ./install.sh`
