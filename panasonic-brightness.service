@@ -1,0 +1,6 @@
+[Unit]
+Description=Panasonic Brightness
+[Service]
+ExecStart=/usr/local/bin/brightness
+[Install]
+WantedBy=basic.target
